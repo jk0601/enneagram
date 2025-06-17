@@ -310,18 +310,21 @@ textarea:focus {
     overflow-wrap: break-word;
 }
 
-.characteristics, .growth-section, .stress-section, .relationship-section, .summary-section {
+.characteristics, .growth-section, .stress-section, .relationship-section, .summary-section, .analysis-basis {
     padding: 1.2em;
     border-radius: 12px;
     margin-bottom: 1.2em;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
+    word-break: break-all !important;
     hyphens: auto;
     width: 100%;
     box-sizing: border-box;
     max-width: 100%;
     overflow: hidden !important;
     white-space: pre-wrap;
+    display: block !important;
+    position: relative;
 }
 
 .characteristics {
@@ -352,12 +355,41 @@ textarea:focus {
     border: 2px solid #03a9f4;
 }
 
-.characteristics *, .growth-section *, .stress-section *, .relationship-section *, .summary-section * {
+.characteristics *, .growth-section *, .stress-section *, .relationship-section *, .summary-section *, .analysis-basis * {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
+    word-break: break-all !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
+    white-space: pre-wrap !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* 분석 근거 섹션 추가 스타일 */
+.analysis-basis {
+    background: #f8f9fa;
+    border-left: 4px solid #6c757d;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 0.92em !important;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.analysis-basis h3 {
+    color: #6c757d !important;
+    font-size: 1em !important;
+    margin-bottom: 10px;
+}
+
+.analysis-basis * {
+    font-size: 0.92em !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -527,6 +559,46 @@ textarea:focus {
     box-shadow: 
         0 10px 20px rgba(149, 165, 166, 0.4),
         0 0 0 1px rgba(255,255,255,0.2) inset;
+}
+
+/* 다운로드 섹션 스타일 */
+.download-section {
+    text-align: center;
+    margin-top: 2em;
+    padding: 1.5em;
+    background: linear-gradient(145deg, #e8f4f8 0%, #f0f8ff 100%);
+    border-radius: 15px;
+    border: 1px solid #e3f2fd;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1em 2.5em;
+    border-radius: 15px;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 6px 12px rgba(76, 175, 80, 0.3),
+        0 0 0 1px rgba(255,255,255,0.2) inset;
+    margin-bottom: 0.5em;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 20px rgba(76, 175, 80, 0.4),
+        0 0 0 1px rgba(255,255,255,0.2) inset;
+}
+
+.download-note {
+    color: #666;
+    font-size: 0.85em;
+    margin: 0.5em 0 0 0;
+    font-style: italic;
 }
 
 @media (max-width: 768px) {

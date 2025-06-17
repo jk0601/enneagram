@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니어그램 성격 분석기</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>애니어그램 성격 분석기</h1>
+        <p class="subtitle">자기소개와 질문지를 모두 작성하여 더 정확한 애니어그램 분석을 받으세요</p>
+        
+        <form method="post" action="/analyze">
+            <!-- 자기소개 섹션 -->
+            <div class="section">
+                <h3 class="section-title">📝 자기소개</h3>
+                <div class="input-section">
+                    <label for="description">자신에 대해 자유롭게 설명해주세요</label>
+                    <textarea 
+                        name="description" 
+                        id="description"
+                        placeholder="자신의 성격, 행동 패턴, 가치관, 관심사, 일상 생활 등을 자유롭게 작성해주세요. 더 자세히 작성할수록 정확한 분석이 가능합니다." 
+                        required>{{ user_input or '' }}</textarea>
+                </div>
+            </div>
+            
+            <!-- 질문지 섹션 -->
+            <div class="section">
+                <h3 class="section-title">📋 성격 질문지</h3>
+                <div class="questionnaire-section">
+                    <p class="questionnaire-guide">각 문항에 대해 자신에게 가장 가까운 답변을 선택해주세요.</p>
+                    
+                    <div class="question-group">
+                        <div class="question">
+                            <label>1. 나는 완벽을 추구하는 편이다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q1" value="1" required {% if question_answers.q1 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q1" value="2" {% if question_answers.q1 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q1" value="3" {% if question_answers.q1 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q1" value="4" {% if question_answers.q1 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q1" value="5" {% if question_answers.q1 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>2. 나는 다른 사람을 도와야 마음이 편하다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q2" value="1" required {% if question_answers.q2 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q2" value="2" {% if question_answers.q2 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q2" value="3" {% if question_answers.q2 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q2" value="4" {% if question_answers.q2 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q2" value="5" {% if question_answers.q2 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>3. 나는 남들에게 인정받고 싶어한다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q3" value="1" required {% if question_answers.q3 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q3" value="2" {% if question_answers.q3 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q3" value="3" {% if question_answers.q3 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q3" value="4" {% if question_answers.q3 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q3" value="5" {% if question_answers.q3 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>4. 나는 감정적이고 예술적 성향이 강하다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q4" value="1" required {% if question_answers.q4 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q4" value="2" {% if question_answers.q4 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q4" value="3" {% if question_answers.q4 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q4" value="4" {% if question_answers.q4 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q4" value="5" {% if question_answers.q4 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>5. 나는 혼자 있는 시간을 중요하게 여긴다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q5" value="1" required {% if question_answers.q5 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q5" value="2" {% if question_answers.q5 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q5" value="3" {% if question_answers.q5 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q5" value="4" {% if question_answers.q5 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q5" value="5" {% if question_answers.q5 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>6. 나는 안전하고 확실한 것을 선호한다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q6" value="1" required {% if question_answers.q6 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q6" value="2" {% if question_answers.q6 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q6" value="3" {% if question_answers.q6 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q6" value="4" {% if question_answers.q6 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q6" value="5" {% if question_answers.q6 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>7. 나는 새로운 경험과 즐거움을 추구한다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q7" value="1" required {% if question_answers.q7 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q7" value="2" {% if question_answers.q7 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q7" value="3" {% if question_answers.q7 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q7" value="4" {% if question_answers.q7 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q7" value="5" {% if question_answers.q7 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>8. 나는 강하고 독립적인 성격이다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q8" value="1" required {% if question_answers.q8 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q8" value="2" {% if question_answers.q8 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q8" value="3" {% if question_answers.q8 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q8" value="4" {% if question_answers.q8 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q8" value="5" {% if question_answers.q8 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>9. 나는 평화롭고 조화로운 관계를 중시한다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q9" value="1" required {% if question_answers.q9 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q9" value="2" {% if question_answers.q9 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q9" value="3" {% if question_answers.q9 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q9" value="4" {% if question_answers.q9 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q9" value="5" {% if question_answers.q9 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>10. 나는 실수를 용납하지 못한다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q10" value="1" required {% if question_answers.q10 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q10" value="2" {% if question_answers.q10 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q10" value="3" {% if question_answers.q10 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q10" value="4" {% if question_answers.q10 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q10" value="5" {% if question_answers.q10 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>11. 나는 다른 사람의 감정을 잘 알아차린다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q11" value="1" required {% if question_answers.q11 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q11" value="2" {% if question_answers.q11 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q11" value="3" {% if question_answers.q11 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q11" value="4" {% if question_answers.q11 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q11" value="5" {% if question_answers.q11 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <label>12. 나는 목표를 달성하는 것이 중요하다</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="q12" value="1" required {% if question_answers.q12 == '1' %}checked{% endif %}> 전혀 아니다</label>
+                                <label><input type="radio" name="q12" value="2" {% if question_answers.q12 == '2' %}checked{% endif %}> 아니다</label>
+                                <label><input type="radio" name="q12" value="3" {% if question_answers.q12 == '3' %}checked{% endif %}> 보통이다</label>
+                                <label><input type="radio" name="q12" value="4" {% if question_answers.q12 == '4' %}checked{% endif %}> 그렇다</label>
+                                <label><input type="radio" name="q12" value="5" {% if question_answers.q12 == '5' %}checked{% endif %}> 매우 그렇다</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="analyze-btn">통합 분석 시작</button>
+        </form>
+        
+        {% if result %}
+            <div class="error-message">
+                <p style="color: #e74c3c; background: #ffeaea; padding: 1em; border-radius: 10px; text-align: center; margin-top: 2em;">
+                    {{ result|safe }}
+                </p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

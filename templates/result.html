@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니어그램 분석 결과</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>애니어그램 분석 결과</h1>
+        
+        <div class="result">
+            <div class="result-content">
+                {{ result|safe }}
+            </div>
+        </div>
+
+        <!-- 참조 정보 섹션 -->
+        <div class="reference-section">
+            <h2 class="reference-title">🔢 애니어그램 9가지 성격 유형 요약</h2>
+            
+            <div class="type-summary-table">
+                <div class="table-header">
+                    <div class="col">번호</div>
+                    <div class="col">유형 명칭</div>
+                    <div class="col">기본 욕구 / 두려움</div>
+                    <div class="col">핵심 특징</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">1번</div>
+                    <div class="col">개혁가 (Reformer)</div>
+                    <div class="col">올바름 / 부패나 타락</div>
+                    <div class="col">원칙주의, 자기 통제, 완벽주의</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">2번</div>
+                    <div class="col">조력가 (Helper)</div>
+                    <div class="col">사랑받기 / 필요 없다고 느껴지는 것</div>
+                    <div class="col">이타적, 사람 중심, 감정 이입</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">3번</div>
+                    <div class="col">성취자 (Achiever)</div>
+                    <div class="col">성공 / 실패자나 무능력자로 보이는 것</div>
+                    <div class="col">경쟁적, 목표지향, 이미지 관리</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">4번</div>
+                    <div class="col">개인주의자 (Individualist)</div>
+                    <div class="col">정체성 / 평범함, 특별하지 않다고 느끼는 것</div>
+                    <div class="col">감성적, 예술적, 고유성 추구</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">5번</div>
+                    <div class="col">조사자 (Investigator)</div>
+                    <div class="col">이해와 지식 / 무능력, 무지</div>
+                    <div class="col">관찰자, 내성적, 이론 탐구</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">6번</div>
+                    <div class="col">충실가 (Loyalist)</div>
+                    <div class="col">안정과 안전 / 버림받음, 혼자임</div>
+                    <div class="col">신중함, 충성심, 불안 예방</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">7번</div>
+                    <div class="col">열정가 (Enthusiast)</div>
+                    <div class="col">자유, 즐거움 / 고통과 제한</div>
+                    <div class="col">긍정적, 다재다능, 계획 좋아함</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">8번</div>
+                    <div class="col">도전자 (Challenger)</div>
+                    <div class="col">통제 / 약해 보이거나 통제당하는 것</div>
+                    <div class="col">강인함, 리더십, 권위에 도전</div>
+                </div>
+                <div class="table-row">
+                    <div class="col">9번</div>
+                    <div class="col">평화주의자 (Peacemaker)</div>
+                    <div class="col">평화, 조화 / 갈등과 분열</div>
+                    <div class="col">온화함, 융합적, 회피적 성향</div>
+                </div>
+            </div>
+
+            <div class="wings-section">
+                <h3 class="section-subtitle">🔄 날개(Wings) 개념</h3>
+                <p>각 유형은 인접한 번호 중 하나의 영향을 더 많이 받을 수 있습니다.</p>
+                <div class="wings-examples">
+                    <p><strong>예:</strong></p>
+                    <p>• 9w1: 9번이면서 1번의 도덕적 성향도 있음</p>
+                    <p>• 9w8: 9번이면서 8번의 강인함도 있음</p>
+                </div>
+            </div>
+
+            <div class="arrows-section">
+                <h3 class="section-subtitle">🔁 스트레스와 성장 방향</h3>
+                <p>애니어그램은 스트레스 상황과 성장 상황에서 보이는 행동 변화를 화살표로 표현합니다.</p>
+                <div class="arrows-examples">
+                    <p><strong>예:</strong></p>
+                    <p>• 1번 → 스트레스 상황: 4번처럼 감정적으로 변함</p>
+                    <p>• 1번 → 성장 상황: 7번처럼 유쾌하고 낙천적으로 변함</p>
+                </div>
+            </div>
+
+            <div class="centers-section">
+                <h3 class="section-subtitle">🧠 중심별 분류 (3가지 센터)</h3>
+                <div class="centers-table">
+                    <div class="table-header">
+                        <div class="col">센터</div>
+                        <div class="col">유형</div>
+                        <div class="col">핵심 감정</div>
+                        <div class="col">특징</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">본능 중심</div>
+                        <div class="col">8, 9, 1</div>
+                        <div class="col">분노</div>
+                        <div class="col">행동과 통제에 집중</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">감정 중심</div>
+                        <div class="col">2, 3, 4</div>
+                        <div class="col">수치심</div>
+                        <div class="col">관계와 인정에 집중</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col">사고 중심</div>
+                        <div class="col">5, 6, 7</div>
+                        <div class="col">두려움</div>
+                        <div class="col">정보와 미래 계획에 집중</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/" class="back-btn">새로운 분석하기</a>
+        </div>
+    </div>
+</body>
+</html> 

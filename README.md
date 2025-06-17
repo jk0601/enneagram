@@ -73,7 +73,32 @@ python app.py
 - **배포**: Render
 - **UI**: 실버 그라데이션 반응형 디자인
 
-## 🔧 배포 (Render)
+## 🔧 배포 옵션
+
+### Option 1: AWS Elastic Beanstalk (추천)
+
+1. **AWS 계정 생성** 및 로그인
+2. **배포 파일 준비**:
+   ```bash
+   # 배포용 ZIP 파일에 포함할 파일들
+   application.py          # AWS용 메인 파일
+   requirements.txt        # 패키지 의존성
+   runtime.txt            # Python 버전
+   .ebextensions/         # AWS 설정 폴더
+   templates/             # HTML 템플릿
+   static/               # CSS 파일
+   ```
+
+3. **Elastic Beanstalk 배포**:
+   - AWS Console → Elastic Beanstalk
+   - "Create Application" 클릭
+   - Platform: Python 선택
+   - ZIP 파일 업로드
+   - 환경변수 설정: `OPENAI_API_KEY`
+
+4. **URL 확인**: 배포 완료 후 제공되는 URL 접속
+
+### Option 2: Render
 
 1. GitHub에 코드 업로드
 2. Render에서 새 Web Service 생성
